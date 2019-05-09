@@ -20,7 +20,7 @@ propbbdの最後のdはDataMemberのdである。
 
 ```cs
 /// <summary>Hoge's description(backing field)</summary>
-private object _Hoge;
+private object _Hoge = default;
 /// <summary>Hoge's description</summary>
 [DataMember]
 public object Hoge
@@ -30,8 +30,9 @@ public object Hoge
 }
 ```
 
-この雛形において、以下の３つが変更出来る部分である。
+この雛形において、以下の４つが変更出来る部分である。
 
 - summary文（ただし(backing field)の部分は固定）
 - クラス型（デフォルトだとobjectになっている部分）
 - プロパティ名（Hogeの部分。backing field側のアンダースコアは固定）
+- プロパティの初期値（defaultの部分）
