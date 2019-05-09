@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PackageLanguagePackManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Description>ELIONIX製ライブラリを使用した記述を補助するスニペット集。</Description>
+  </Metadata>
+</PackageLanguagePackManifest>
