@@ -4,7 +4,9 @@
 
 ## C#のLib用のスニペット
 
-### BindableBase補助
+### データクラス関連
+
+#### propbb
 
 Lib.BindableBaseやその派生クラスを継承して作成するクラスにおいて、変更通知プロパティの定義を記述するときに使用するスニペットとなる。  
 以下の２つが存在する。
@@ -36,3 +38,18 @@ public object Hoge
 - クラス型（デフォルトだとobjectになっている部分）
 - プロパティ名（Hogeの部分。backing field側のアンダースコアは固定）
 - プロパティの初期値（defaultの部分）
+
+#### dcattr
+
+Lib.BindableBaseやLib.Data.CloneableDataBaseの派生クラスなど、シリアライズ対象となるクラスにはDataContract属性やSerializable属性を付ける。  
+その記述を補助するスニペットとなる。  
+名前は、Data Contract ATTRibuteである。
+
+以下のコードが生成される。
+
+```cs
+[Serializable]
+[DataContract(Namespace = "")]
+```
+
+同時に、"System.Runtime.Serialization"のusing宣言と、System.Runtime.Serialization.dllの参照が追加される。
