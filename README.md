@@ -53,3 +53,50 @@ Lib.BindableBaseやLib.Data.CloneableDataBaseの派生クラスなど、シリ�
 ```
 
 同時に、"System.Runtime.Serialization"のusing宣言と、System.Runtime.Serialization.dllの参照が追加される。
+
+### その他
+
+#### disposablebor
+
+DisposableBaseを継承したクラスにおいてoverrideして実装しなくてはいけない、DisposeManagedResourcesとDisposeUnmanagedResources関数の雛形を生成する。  
+名前は、DISPOSABLE Base OverRideである。
+
+以下のコードが生成される。
+
+```cs
+//------------------------------------------------------------------------------------//
+/// <summary>マネージドリソースを破棄する</summary>
+///
+/// <remarks>
+/// Disposableな内部オブジェクトはこっちの関数で解放する。
+/// また、この関数をoverrideする時、
+/// 抽象でない基底クラスの同関数を必ず呼ぶようにすること。
+/// </remarks>
+//! @author ELIONIX
+//------------------------------------------------------------------------------------//
+protected override void DisposeManagedResources()
+{
+	//何も無し
+}
+
+//------------------------------------------------------------------------------------//
+/// <summary>アンマネージドリソースを破棄する</summary>
+///
+/// <remarks>
+/// 通常こちらの関数で解放するべきリソースは殆ど無い。
+/// ファイルやウィンドウなどでも、Manageクラスでラップされていれば
+/// ManagedResourceとして処理する（Disposeを呼ぶ）。
+/// ここに書くのは、Win32 APIを直接呼んで取得したハンドル（IntPtr）等を
+/// CloseHandleする必要があるような場合である。
+/// また、この関数をoverrideする時、
+/// 抽象でない基底クラスの同関数を必ず呼ぶようにすること。
+/// </remarks>
+//! @author ELIONIX
+//------------------------------------------------------------------------------------//
+protected override void DisposeUnmanagedResources()
+{
+	//何も無し
+}
+```
+
+この雛形において、@authorの名前部分が変更出来る部分となる。
