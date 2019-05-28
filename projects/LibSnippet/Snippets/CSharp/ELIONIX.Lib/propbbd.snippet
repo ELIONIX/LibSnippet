@@ -4,7 +4,7 @@
     <Header>
       <Title>propbbd</Title>
       <Shortcut>propbbd</Shortcut>
-      <Description>Generate change notification properties for Lib.BindableBase. (With DataMember)</Description>
+      <Description>Lib.BindableBase用の変更通知プロパティの定義を生成する。（DataMember属性付き）</Description>
       <Author>SAITO Takamasa</Author>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -14,22 +14,22 @@
       <Declarations>
         <Literal>
           <ID>type</ID>
-          <ToolTip>Type of property</ToolTip>
+          <ToolTip>プロパティの型</ToolTip>
           <Default>object</Default>
         </Literal>
         <Literal>
           <ID>property</ID>
-          <ToolTip>Name of property</ToolTip>
+          <ToolTip>プロパティ名</ToolTip>
           <Default>Hoge</Default>
         </Literal>
         <Literal>
           <ID>summary</ID>
-          <ToolTip>Description of property</ToolTip>
-          <Default>What is the Hoge parameter</Default>
+          <ToolTip>プロパティの説明</ToolTip>
+          <Default>このプロパティは何か？</Default>
         </Literal>
         <Literal>
           <ID>initial</ID>
-          <ToolTip>Initial value of property</ToolTip>
+          <ToolTip>プロパティの初期値</ToolTip>
           <Default>default</Default>
         </Literal>
       </Declarations>
@@ -43,7 +43,7 @@
       get { return _$property$; }
       set { SetProperty(ref _$property$, value); }
     }
-    $end$]]>
+		$end$]]>
       </Code>
     </Snippet>
   </CodeSnippet>

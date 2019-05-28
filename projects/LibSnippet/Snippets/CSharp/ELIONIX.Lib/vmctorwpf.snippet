@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>vmctorwpf</Title>
+      <Shortcut>vmctorwpf</Shortcut>
+      <Description>View Modelのコンストラクタの雛形を生成する（WPF版）</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Wpf.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>ELIONIX.Lib.Wpf</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>class</ID>
+          <Function>ClassName()</Function>
+          <ToolTip>クラスの名前</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>author</ID>
+          <ToolTip>作成者の名前</ToolTip>
+          <Default>ELIONIX</Default>
+        </Literal>
+        <Literal>
+          <ID>modelcontainer</ID>
+          <Default>Models.IModelContainer</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[//------------------------------------------------------------------------------------//
+		/// <summary>xamlデザイナ用のインスタンスを生成</summary>
+		/// 
+		//! @author $author$
+		//------------------------------------------------------------------------------------//
+		public $class$()
+			: this(null, null)
+		{
+			ViewModelUtility.InitializeForXamlDesigner(() => { });
+		}
+
+		//------------------------------------------------------------------------------------//
+		/// <summary>Modelを注入してインスタンスを生成</summary>
+		/// 
+		/// <param name="container">モデル格納オブジェクト</param>
+		/// <param name="uiActions">UIに依存する処理を中継するオブジェクト</param>
+		//! @author $author$
+		//------------------------------------------------------------------------------------//
+		public $class$(
+			$modelcontainer$ container,
+			IWpfUiActions uiActions)
+			: base(container, uiActions)
+		{
+		}
+		$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
