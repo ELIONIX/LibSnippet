@@ -42,11 +42,10 @@
           <ToolTip>プロパティの初期値</ToolTip>
           <Default>default</Default>
         </Literal>
-        <Literal>
+        <Literal Editable="false">
           <ID>owner</ID>
           <Function>ClassName()</Function>
           <ToolTip>依存関係プロパティを持つクラスの名前</ToolTip>
-          <Default>ignore this element</Default>
         </Literal>
       </Declarations>
       <Code Language="csharp">
@@ -63,7 +62,7 @@
 			get => ($type$)GetValue($property$Property);
 			set => SetValue($property$Property, value);
 		}
-    $end$]]>
+		$end$]]>
       </Code>
     </Snippet>
   </CodeSnippet>

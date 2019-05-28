@@ -58,6 +58,49 @@ Lib.BindableBaseやLib.Data.CloneableDataBaseの派生クラスなど、シリ�
 
 ### classの初期化・終了系
 
+#### vmctorwpf
+
+WPFのプロジェクトにおける、標準的なコンストラクタの記述の雛形を生成する。  
+
+以下の雛形が生成される。
+
+```cs
+//------------------------------------------------------------------------------------//
+/// <summary>xamlデザイナ用のインスタンスを生成</summary>
+///
+//! @author ELIONIX
+//------------------------------------------------------------------------------------//
+public HogeViewModel()
+	: this(null, null)
+{
+	ViewModelUtility.InitializeForXamlDesigner(() => { });
+}
+
+//------------------------------------------------------------------------------------//
+/// <summary>Modelを注入してインスタンスを生成</summary>
+///
+/// <param name="container">モデル格納オブジェクト</param>
+/// <param name="uiActions">UIに依存する処理を中継するオブジェクト</param>
+//! @author ELIONIX
+//------------------------------------------------------------------------------------//
+public HogeViewModel(
+	Models.IModelContainer container,
+	IWpfUiActions uiActions)
+	: base(container, uiActions)
+{
+}
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|author|ELIONIX|自分の名前を記述する|
+|model container|Models.IModelContainer|modelを格納するオブジェクトの型を決定する。|
+|関数名|HogeVilewModel|コンストラクタ。<br>実際にはHogeViewModelでは無く雛形を生成したクラスの名前が自動的に入る。|
+
+また、コードの生成と同時に、"ELIONIX.Lib.Wpf"のusing宣言と、ELIONIX.Lib.Wpf.dllの参照が追加される。
+
 #### disposablebor
 
 DisposableBaseを継承したクラスにおいてoverrideして実装しなくてはいけない、DisposeManagedResourcesとDisposeUnmanagedResources関数の雛形を生成する。  
