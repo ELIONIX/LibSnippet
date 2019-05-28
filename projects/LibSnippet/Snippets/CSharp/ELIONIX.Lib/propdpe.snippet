@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>propdpe</Title>
+      <Shortcut>propdpe</Shortcut>
+      <Description>依存関係プロパティを生成する。</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>WindowsBase.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>System.Windows</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>object</Default>
+        </Literal>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>プロパティの名前</ToolTip>
+          <Default>Hoge</Default>
+        </Literal>
+        <Literal>
+          <ID>summary</ID>
+          <ToolTip>プロパティの説明</ToolTip>
+          <Default>このプロパティは何か？</Default>
+        </Literal>
+        <Literal>
+          <ID>initial</ID>
+          <ToolTip>プロパティの初期値</ToolTip>
+          <Default>default</Default>
+        </Literal>
+        <Literal>
+          <ID>owner</ID>
+          <Function>ClassName()</Function>
+          <ToolTip>依存関係プロパティを持つクラスの名前</ToolTip>
+          <Default>ignore this element</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[/// <summary>$summary$</summary>
+		public static readonly DependencyProperty $property$Property = DependencyProperty.Register(
+			nameof($property$),
+			typeof($type$),
+			typeof($owner$),
+			new PropertyMetadata($initial$));
+
+		/// <summary>$property$依存関係プロパティのラッパー</summary>
+		public $type$ $property$
+		{
+			get => ($type$)GetValue($property$Property);
+			set => SetValue($property$Property, value);
+		}
+    $end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
