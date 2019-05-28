@@ -156,7 +156,7 @@ public object Hoge
 
 //------------------------------------------------------------------------------------//
 /// <summary>HogePropertyの値が変わった時のコールバック関数</summary>
-/// 
+///
 /// <param name="d">依存関係プロパティのインスタンスがあるクラス（キャストして使用）</param>
 /// <param name="e">イベントの情報</param>
 //! @author ELIONIX
@@ -175,6 +175,74 @@ protected static void OnHogePropertyChanged(DependencyObject d, DependencyProper
 |名前|Hoge|プロパティ名を決定する。|
 |初期値|default|プロパティの初期値を決定する。|
 |親クラス|Piyo|依存関係プロパティを持つクラスの型。<br>実際にはPiyoでは無く雛形を生成したクラスの名前が自動的に入る。|
+|author|ELIONIX|自分の名前を記述する|
+
+また、コードの生成と同時に、"System.Windows"のusing宣言と、WindowsBase.dllの参照が追加される。
+
+#### propae, propaeb
+
+添付プロパティと添付ビヘイビアの定義を記述するときに使用するスニペットとなる。
+
+- proppe
+- proppeb
+
+の二つが存在する。  
+また、標準にpropaというスニペットが存在し、それを改良したものとなる。  
+名称もpropaから派生し、PROPA Elionix (Behavior)である。  
+元のpropdpのpropはPROPerty、aはAttachedと思われる。
+
+propaeは以下の雛形を生成する
+
+```cs
+/// <summary>このプロパティは何か？</summary>
+public static readonly DependencyProperty HogeProperty = DependencyProperty.RegisterAttached(
+	"Hoge",
+	typeof(object),
+	typeof(Piyo),
+	new PropertyMetadata(default));
+
+/// <summary>Hoge添付プロパティのgetter</summary>
+public static object GetHoge(DependencyObject obj) => (object)obj.GetValue(HogeProperty);
+/// <summary>Hoge添付プロパティのsetter</summary>
+public static void SetHoge(DependencyObject obj, object value) => obj.SetValue(HogeProperty, value);
+```
+
+また、propaebは以下の雛形を生成する
+
+```cs
+/// <summary>このプロパティは何か？</summary>
+public static readonly DependencyProperty HogeProperty = DependencyProperty.RegisterAttached(
+	"Hoge",
+	typeof(object),
+	typeof(Piyo),
+	new PropertyMetadata(default, new PropertyChangedCallback(OnHogePropertyChanged)));
+
+/// <summary>Hoge添付プロパティのgetter</summary>
+public static object GetHoge(DependencyObject obj) => (object)obj.GetValue(HogeProperty);
+/// <summary>Hoge添付プロパティのsetter</summary>
+public static void SetHoge(DependencyObject obj, object value) => obj.SetValue(HogeProperty, value);
+
+//------------------------------------------------------------------------------------//
+/// <summary>HogePropertyの値が変わった時のコールバック関数（添付ビヘイビア動作）</summary>
+///
+/// <param name="d">添付プロパティを添付されたオブジェクト（キャストして使用）</param>
+/// <param name="e">イベントの情報</param>
+//! @author ELIONIX
+//------------------------------------------------------------------------------------//
+protected static void OnHogePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+{
+}
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|summary文|このプロパティは何か？|プロパティの説明文を記述する。|
+|型|object|プロパティの型を決定する。|
+|名前|Hoge|プロパティ名を決定する。|
+|初期値|default|プロパティの初期値を決定する。|
+|対象クラス|Piyo|添付プロパティを添付するクラスの型。|
 |author|ELIONIX|自分の名前を記述する|
 
 また、コードの生成と同時に、"System.Windows"のusing宣言と、WindowsBase.dllの参照が追加される。

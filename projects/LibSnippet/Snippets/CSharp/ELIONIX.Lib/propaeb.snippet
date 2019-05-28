@@ -2,9 +2,9 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>propdpec</Title>
-      <Shortcut>propdpec</Shortcut>
-      <Description>依存関係プロパティを生成する。（コールバック関数付き）</Description>
+      <Title>propaeb</Title>
+      <Shortcut>propaeb</Shortcut>
+      <Description>添付ビヘイビア（コールバック付き添付プロパティ）を生成する。</Description>
       <Author>SAITO Takamasa</Author>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -43,10 +43,9 @@
           <Default>default</Default>
         </Literal>
         <Literal>
-          <ID>owner</ID>
-          <Function>ClassName()</Function>
-          <ToolTip>依存関係プロパティを持つクラスの名前</ToolTip>
-          <Default>ignore this element</Default>
+          <ID>target</ID>
+          <ToolTip>プロパティを添付する対象のクラス型</ToolTip>
+          <Default>Piyo</Default>
         </Literal>
         <Literal>
           <ID>author</ID>
@@ -56,23 +55,21 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[/// <summary>$summary$</summary>
-		public static readonly DependencyProperty $property$Property = DependencyProperty.Register(
-			nameof($property$),
+		public static readonly DependencyProperty $property$Property = DependencyProperty.RegisterAttached(
+			"$property$",
 			typeof($type$),
-			typeof($owner$),
+			typeof($target$),
 			new PropertyMetadata($initial$, new PropertyChangedCallback(On$property$PropertyChanged)));
 
-		/// <summary>$property$依存関係プロパティのラッパー</summary>
-		public $type$ $property$
-		{
-			get => ($type$)GetValue($property$Property);
-			set => SetValue($property$Property, value);
-		}
-
+		/// <summary>$property$添付プロパティのgetter</summary>
+		public static $type$ Get$property$(DependencyObject obj) => ($type$)obj.GetValue($property$Property);
+		/// <summary>$property$添付プロパティのsetter</summary>
+		public static void Set$property$(DependencyObject obj, $type$ value) => obj.SetValue($property$Property, value);
+    
     //------------------------------------------------------------------------------------//
-		/// <summary>$property$Propertyの値が変わった時のコールバック関数</summary>
+		/// <summary>$property$Propertyの値が変わった時のコールバック関数（添付ビヘイビア動作）</summary>
 		///
-		/// <param name="d">依存関係プロパティのインスタンスがあるクラスのオブジェクト（キャストして使用）</param>
+		/// <param name="d">添付プロパティを添付されたオブジェクト（キャストして使用）</param>
 		/// <param name="e">イベントの情報</param>
 		//! @author $author$
 		//------------------------------------------------------------------------------------//
