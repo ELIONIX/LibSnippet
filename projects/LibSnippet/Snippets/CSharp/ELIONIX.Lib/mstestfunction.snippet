@@ -2,9 +2,9 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>mstestclass</Title>
-      <Shortcut>mstestclass</Shortcut>
-      <Description>MSTestのUTクラスの雛形を生成する。</Description>
+      <Title>mstestfunction</Title>
+      <Shortcut>mstestfunction</Shortcut>
+      <Description>MSTestのUT関数の雛形を生成する。</Description>
       <Author>SAITO Takamasa</Author>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
@@ -18,17 +18,17 @@
       </Imports>
       <Declarations>
         <Literal>
-          <ID>class</ID>
-          <ToolTip>UT対象のクラスの名前</ToolTip>
+          <ID>function</ID>
+          <ToolTip>UT対象の関数の名前</ToolTip>
           <Default>Hoge</Default>
         </Literal>
       </Declarations>
       <Code Language="csharp">
-        <![CDATA[[TestClass()]
-	public class $class$Tests
-	{
-		$end$
-	}]]>
+        <![CDATA[[TestMethod()]
+		public void Test$function$()
+		{
+			$end$
+		}]]>
       </Code>
     </Snippet>
   </CodeSnippet>

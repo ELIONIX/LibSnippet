@@ -309,7 +309,7 @@ protected static void OnHogePropertyChanged(DependencyObject d, DependencyProper
 #### mstestclass
 
 MSTestでのUTクラスを作成する時に使用するスニペット。  
-以下の雛形を作成する。
+以下の雛形を生成する。
 
 ```cs
 [TestClass()]
@@ -323,6 +323,35 @@ public class HogeTests
 |箇所|初期文字列|説明|
 |:--|:--|:--|
 |対象クラス|Hoge|UT対象のクラス名を入力し、UT用のクラスの名前を完成させる。|
+
+また、コードの生成と同時に、"Microsoft.VisualStudio.TestTools.UnitTesting"のusing宣言が追加される。  
+dll参照はnuget packageのため追加しない。
+
+#### mstestfunction, mstestfunctionasync
+
+MSTestでのUT関数を作成する時に使用するスニペット。
+
+mstestfunctionとmstestfunctionasyncはそれぞれ以下の雛形を生成する。
+
+```cs
+[TestMethod()]
+public void TestHoge()
+{
+
+}
+
+[TestMethod()]
+public async Task TestHogeAsync()
+{
+
+}
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|対象関数|Hoge|UT対象の関数名を入力し、UT用の関数名を完成させる。|
 
 また、コードの生成と同時に、"Microsoft.VisualStudio.TestTools.UnitTesting"のusing宣言が追加される。  
 dll参照はnuget packageのため追加しない。
