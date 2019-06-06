@@ -312,3 +312,19 @@ UTUtilityという文字だけのコードを生成する。
 また、コードの生成と同時に、"ELIONIX.Lib.Tests.Core"のusing宣言と、ELIONIX.Lib.Tests.dll及びELIONIX.Lib.Tests.Core.dllの参照が追加される。
 
 usingと参照の追加動作の方がメインのスニペット。
+
+#### ututiodirectory, ututiodirectoryasync
+
+ファイルの入出力が関わる単体テストを書く場面において、UTUtility.RunIOTestWithAppropriateDirectoryやUTUtility.RunIOTestWithAppropriateDirectoryAsyncを使いたいときに使用するスニペット。  
+
+ututiodirectoryは以下の雛形を生成する。
+
+```cs
+UTUtility.RunIOTestWithAppropriateDirectory(
+	GetType(),
+	directory => {
+		
+	});
+```
+
+また、コードの生成と同時に、"ELIONIX.Lib.Tests.Core"のusing宣言と、ELIONIX.Lib.Tests.dll及びELIONIX.Lib.Tests.Core.dllの参照が追加される。
