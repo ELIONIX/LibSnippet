@@ -303,3 +303,12 @@ protected static void OnHogePropertyChanged(DependencyObject d, DependencyProper
 |author|ELIONIX|自分の名前を記述する|
 
 また、コードの生成と同時に、"System.Windows"のusing宣言と、WindowsBase.dllの参照が追加される。
+
+### 単体テスト関連
+
+#### utut
+
+UTUtilityという文字だけのコードを生成する。  
+また、コードの生成と同時に、"ELIONIX.Lib.Tests.Core"のusing宣言と、ELIONIX.Lib.Tests.dll及びELIONIX.Lib.Tests.Core.dllの参照が追加される。
+
+usingと参照の追加動作の方がメインのスニペット。
