@@ -56,6 +56,20 @@ Lib.BindableBaseやLib.Data.CloneableDataBaseの派生クラスなど、シリ�
 
 また、コードの生成と同時に、"System.Runtime.Serialization"のusing宣言と、System.Runtime.Serialization.dllの参照が追加される。
 
+#### cloneabledb, fileabledb
+
+```CloneableDataBase<T>```、または、```FileableDataBase<T>```を継承するクラスの定義において、親クラスを指定する部分のコードを生成する。  
+名前は、CLONEABLEDataBase、及び、FILEABLEDataBaseである。  
+
+例えばcloneabledbの場合、以下のコードが生成される。
+
+```cs
+CloneableDataBase<Hoge>
+```
+
+Hogeの部分には、自分のクラス名が自動的に挿入される。  
+また、コードの生成と同時に、"ELIONIX.Lib.Data"のusing宣言と、ELIONIX.Lib.dllの参照が追加される。
+
 ### classの初期化・終了系
 
 #### vmctorwpf
