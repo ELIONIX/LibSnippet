@@ -6,6 +6,24 @@
 
 ### enum, EnumHelper関連
 
+#### enumhelper
+
+EnumHelperを使うときに使用するスニペット。
+以下の雛形が生成される。
+
+```cs
+EnumHelper<HogeKind>
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|列挙型|HogeKind|列挙してforeachを行いたい列挙型を記述する。|
+また、コードの生成と同時に、"ELIONIX.Lib.Enums"のusing宣言と、ELIONIX.Lib.dllの参照が追加される。
+
+usingと参照の追加動作の方がメインのスニペット。
+
 #### enumforeach
 
 EnumHelper.ForEachを記述したいときに使用するスニペット。  
