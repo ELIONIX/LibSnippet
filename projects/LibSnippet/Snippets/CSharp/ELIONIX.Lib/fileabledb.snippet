@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>fileabledb</Title>
+      <Shortcut>fileabledb</Shortcut>
+      <Description>基底クラスとしてFileableDataBase{T}を指定する記述を生成する</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>ELIONIX.Lib.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>ELIONIX.Lib.Data</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>class</ID>
+          <Function>ClassName()</Function>
+          <ToolTip>自クラスの名前</ToolTip>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[FileableDataBase<$class$>$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

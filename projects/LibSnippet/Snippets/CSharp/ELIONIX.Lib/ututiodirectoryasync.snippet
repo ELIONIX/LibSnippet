@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ututiodirectoryasync</Title>
+      <Shortcut>ututiodirectoryasync</Shortcut>
+      <Description>UTUtility.RunIOTestWithAppropriateDirectoryの雛形を生成する。</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.dll</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.Core.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>ELIONIX.Lib.Tests.Core</Namespace>
+        </Import>
+      </Imports>
+      <Code Language="csharp">
+        <![CDATA[await UTUtility.RunIOTestWithAppropriateDirectoryAsync(
+				GetType(),
+				async directory => {
+					$end$
+				});]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -4,6 +4,45 @@
 
 ## C#のLib用のスニペット
 
+### enum, EnumHelper関連
+
+#### enumhelper
+
+EnumHelperを使うときに使用するスニペット。
+以下の雛形が生成される。
+
+```cs
+EnumHelper<HogeKind>
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|列挙型|HogeKind|列挙してforeachを行いたい列挙型を記述する。|
+また、コードの生成と同時に、"ELIONIX.Lib.Enums"のusing宣言と、ELIONIX.Lib.dllの参照が追加される。
+
+usingと参照の追加動作の方がメインのスニペット。
+
+#### enumforeach
+
+EnumHelper.ForEachを記述したいときに使用するスニペット。  
+以下の雛形が生成される。
+
+```cs
+EnumHelper<HogeKind>.ForEach(kind => {
+
+});
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|列挙型|HogeKind|列挙してforeachを行いたい列挙型を記述する。|
+
+また、コードの生成と同時に、"ELIONIX.Lib.Enums"のusing宣言と、ELIONIX.Lib.dllの参照が追加される。
+
 ### データクラス関連
 
 #### propbb, propbbd
@@ -55,6 +94,20 @@ Lib.BindableBaseやLib.Data.CloneableDataBaseの派生クラスなど、シリ�
 ```
 
 また、コードの生成と同時に、"System.Runtime.Serialization"のusing宣言と、System.Runtime.Serialization.dllの参照が追加される。
+
+#### cloneabledb, fileabledb
+
+```CloneableDataBase<T>```、または、```FileableDataBase<T>```を継承するクラスの定義において、親クラスを指定する部分のコードを生成する。  
+名前は、CLONEABLEDataBase、及び、FILEABLEDataBaseである。  
+
+例えばcloneabledbの場合、以下のコードが生成される。
+
+```cs
+CloneableDataBase<Hoge>
+```
+
+Hogeの部分には、自分のクラス名が自動的に挿入される。  
+また、コードの生成と同時に、"ELIONIX.Lib.Data"のusing宣言と、ELIONIX.Lib.dllの参照が追加される。
 
 ### classの初期化・終了系
 
@@ -289,3 +342,78 @@ protected static void OnHogePropertyChanged(DependencyObject d, DependencyProper
 |author|ELIONIX|自分の名前を記述する|
 
 また、コードの生成と同時に、"System.Windows"のusing宣言と、WindowsBase.dllの参照が追加される。
+
+### 単体テスト関連
+
+#### mstestclass
+
+MSTestでのUTクラスを作成する時に使用するスニペット。  
+以下の雛形を生成する。
+
+```cs
+[TestClass()]
+public class HogeTests
+{
+}
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|対象クラス|Hoge|UT対象のクラス名を入力し、UT用のクラスの名前を完成させる。|
+
+また、コードの生成と同時に、"Microsoft.VisualStudio.TestTools.UnitTesting"のusing宣言が追加される。  
+dll参照はnuget packageのため追加しない。
+
+#### mstestfunction, mstestfunctionasync
+
+MSTestでのUT関数を作成する時に使用するスニペット。
+
+mstestfunctionとmstestfunctionasyncはそれぞれ以下の雛形を生成する。
+
+```cs
+[TestMethod()]
+public void TestHoge()
+{
+
+}
+
+[TestMethod()]
+public async Task TestHogeAsync()
+{
+
+}
+```
+
+この雛形において、変更出来る箇所は以下の通り。
+
+|箇所|初期文字列|説明|
+|:--|:--|:--|
+|対象関数|Hoge|UT対象の関数名を入力し、UT用の関数名を完成させる。|
+
+また、コードの生成と同時に、"Microsoft.VisualStudio.TestTools.UnitTesting"のusing宣言が追加される。  
+dll参照はnuget packageのため追加しない。
+
+#### utut
+
+UTUtilityという文字だけのコードを生成する。  
+また、コードの生成と同時に、"ELIONIX.Lib.Tests.Core"のusing宣言と、ELIONIX.Lib.Tests.dll及びELIONIX.Lib.Tests.Core.dllの参照が追加される。
+
+usingと参照の追加動作の方がメインのスニペット。
+
+#### ututiodirectory, ututiodirectoryasync
+
+ファイルの入出力が関わる単体テストを書く場面において、UTUtility.RunIOTestWithAppropriateDirectoryやUTUtility.RunIOTestWithAppropriateDirectoryAsyncを使いたいときに使用するスニペット。  
+
+ututiodirectoryは以下の雛形を生成する。
+
+```cs
+UTUtility.RunIOTestWithAppropriateDirectory(
+	GetType(),
+	directory => {
+		
+	});
+```
+
+また、コードの生成と同時に、"ELIONIX.Lib.Tests.Core"のusing宣言と、ELIONIX.Lib.Tests.dll及びELIONIX.Lib.Tests.Core.dllの参照が追加される。
