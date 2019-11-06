@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ututdataclass</Title>
+      <Shortcut>ututdataclass</Shortcut>
+      <Description>データクラスに対する初期化とシリアライズ属性のUTを生成</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.dll</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.Core.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>ELIONIX.Lib.Tests.Core</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>class</ID>
+          <ToolTip>データクラスの型名</ToolTip>
+          <Default>Hoge</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[var obj = new $class$();
+			UTUtility.CheckClassAllPropertiesInitialization(obj);
+			UTUtility.CheckClassAttributeForSerialize(obj);$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
