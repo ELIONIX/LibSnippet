@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ututenumtodisplayname</Title>
+      <Shortcut>ututenumtodisplayname</Shortcut>
+      <Description>enumのToDisplayName関数に対するUT記述を生成する</Description>
+      <Author>SAITO Takamasa</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.dll</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>ELIONIX.Lib.Tests.Core.dll</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>ELIONIX.Lib.Tests.Core</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>enum</ID>
+          <ToolTip>enum型の名前</ToolTip>
+          <Default>HogeKind</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[UTUtility.TestEnumToDisplayName<$enum$>();$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
