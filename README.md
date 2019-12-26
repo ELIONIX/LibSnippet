@@ -66,8 +66,8 @@ private object _Hoge = default;
 [DataMember]
 public object Hoge
 {
-	get { return _Hoge; }
-	set { SetProperty(ref _Hoge, value); }
+	get => return _Hoge;
+	set => SetProperty(ref _Hoge, value);
 }
 ```
 
